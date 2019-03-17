@@ -246,7 +246,7 @@ Now, when the `li` element is clicked, a `showPerson` method will be called in t
 
 Add the action to the `people-list.js` file:
 
-```javascript {data-filename="app/components/people-list.js" data-diff="+4,+5,+6,+7,+8"}
+```javascript {data-filename="app/components/people-list.js" data-diff="+2,+5,+6,+7,+8"}
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 
@@ -258,7 +258,7 @@ export default class PeopleList extends Component {
 }
 ```
 
-The `@action` is something called a decorator, and it lets your Ember app know that the `showPerson` method should be available for the template to use.
+The `@action` is something called a decorator, and it lets your Ember app know that the `showPerson` method should be invocable by name in the component's template via `{{action "showPerson"}}`
 
 Now in the browser when a scientist's name is clicked,
 this function is called and the person's name is alerted.

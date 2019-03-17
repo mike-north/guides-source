@@ -26,7 +26,7 @@ export default class SlowModelRoute extends Route {
   model() {
     return this.store.findAll('slow-model');
   }
-};
+}
 ```
 
 If you navigate to `slow-model`, in the `model` hook,
@@ -119,7 +119,7 @@ export default class FooSlowModelRoute extends Route {
     controller.set('currentlyLoading', true);
     return true; // allows the loading template to be shown
   }
-};
+}
 ```
 
 If the `loading` handler is not defined at the specific route,

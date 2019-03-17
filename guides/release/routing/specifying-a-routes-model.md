@@ -19,7 +19,7 @@ export default class FavoritePostsRoute extends Route {
   model() {
     return this.store.query('post', { favorite: true });
   }
-};
+}
 ```
 
 Typically, the `model` [hook](../../getting-started/core-concepts/#toc_hooks) should return an [Ember Data](../../models/) record,
@@ -75,7 +75,7 @@ export default class PhotoRoute extends Route {
   model(params) {
     return this.store.findRecord('photo', params.photo_id);
   }
-};
+}
 ```
 
 In the `model` hook for routes with dynamic segments, it's your job to
@@ -137,7 +137,7 @@ export default class SongsRoute extends Route {
       albums: this.store.findAll('album')
     });
   }
-};
+}
 ```
 
 In the `songs` template, we can specify both models and use the `{{#each}}` helper to display
@@ -180,7 +180,7 @@ export default class AlbumIndexRoute extends Route {
 
     return this.store.query('song', { album: album_id });
   }
-};
+}
 ```
 
 This is guaranteed to work because the parent route is loaded. But if you tried to
@@ -220,7 +220,7 @@ export default class AlbumRoute extends Route {
       songs: this.store.query('songs', { album: album_id })
     });
   }
-};
+}
 ```
 
 And calling `modelFor` returned the result of the `model` hook.

@@ -63,7 +63,7 @@ export default class DiscoRoute extends Route {
       transition.abort();
     }
   }
-};
+}
 ```
 
 ### Storing and Retrying a Transition
@@ -84,7 +84,7 @@ export default class SomeAuthenticatedRoute extends Route {
       this.transitionTo('login');
     }
   }
-};
+}
 ```
 
 ```javascript {data-filename=app/controllers/login.js}
@@ -104,5 +104,5 @@ export default class SomethingController extends Controller {
       this.transitionToRoute('index');
     }
   }
-};
+}
 ```
