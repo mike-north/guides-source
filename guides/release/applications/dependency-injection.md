@@ -38,12 +38,13 @@ For example, an application initializer could register a `Logger` factory with t
 ```javascript {data-filename=app/initializers/logger.js}
 import EmberObject from '@ember/object';
 
+class Logger extends EmberObject {
+  log(m) {
+    console.log(m);
+  }
+}
+
 export function initialize(application) {
-  let Logger = EmberObject.extend({
-    log(m) {
-      console.log(m);
-    }
-  });
 
   application.register('logger:main', Logger);
 }
@@ -94,11 +95,11 @@ In the following example, the `Message` class is registered as a non-singleton:
 ```javascript {data-filename=app/initializers/notification.js}
 import EmberObject from '@ember/object';
 
-export function initialize(application) {
-  let Message = EmberObject.extend({
-    text: ''
-  });
+class Message extends EmberObject {
+  text: ''
+}
 
+export function initialize(application) {
   application.register('notification:message', Message, { singleton: false });
 }
 
@@ -117,13 +118,13 @@ Factories can be injected into whole "types" of factories with _type injections_
 ```javascript {data-filename=app/initializers/logger.js}
 import EmberObject from '@ember/object';
 
-export function initialize(application) {
-  let Logger = EmberObject.extend({
-    log(m) {
-      console.log(m);
-    }
-  });
+class Logger extends EmberObject {
+  log(m) {
+    console.log(m);
+  }
+}
 
+export function initialize(application) {
   application.register('logger:main', Logger);
   application.inject('route', 'logger', 'logger:main');
 }
@@ -143,12 +144,12 @@ Routes in this example application can now access the injected logger:
 ```javascript {data-filename=app/routes/index.js}
 import Route from '@ember/routing/route';
 
-export default Route.extend({
+export default class IndexRoute extends Route {
   activate() {
     // The logger property is injected into all routes
     this.logger.log('Entered the index route!');
   }
-});
+}
 ```
 
 Injections can also be made on a specific factory by using its full key:
